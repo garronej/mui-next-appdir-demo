@@ -1,14 +1,34 @@
-import { NextAppDirEmotionCacheProvider } from "tss-react/next";
-import AppThemeProvider from "../shared/AppThemeProvider";
+
+import "./styles.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode; }) {
   return (
     <html>
-      <head></head>
+      <head>
+        <script dangerouslySetInnerHTML={{
+          "__html": ` 
+          document.documentElement.setAttribute("data-fr-theme", "dark") 
+
+          document.getElementById("root-color-scheme")?.remove();
+
+          document.head.insertAdjacentHTML(
+              "afterend",
+              \`<style id="root-color-scheme">:root { color-scheme: dark; }</style>\`
+          );
+
+          document.querySelector("meta[name=theme-color]")?.remove();
+
+          document.head.insertAdjacentHTML(
+              "afterend",
+              \`<meta name="theme-color" content="black">\`
+          );
+
+          `
+        }}></script>
+
+      </head>
       <body>
-        <NextAppDirEmotionCacheProvider options={{ key: "css" }}>
-          <AppThemeProvider>{children}</AppThemeProvider>
-        </NextAppDirEmotionCacheProvider>
+        {children}
       </body>
     </html>
   );
