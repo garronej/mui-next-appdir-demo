@@ -4,7 +4,7 @@
 ```bash
 git clone https://github.com/garronej/mui-next-appdir-demo
 cd mui-next-appdir-demo
-git checkout darkmode
+git checkout pagesdir-darkmode
 yarn
 yarn dev
 ```
