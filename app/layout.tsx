@@ -6,7 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode; })
     <html suppressHydrationWarning={true}>
       <head>
         {/* Remove this script tag and no error */}
-        <Script strategy="beforeInteractive" dangerouslySetInnerHTML={{
+        <Script id="my-script" strategy="beforeInteractive" dangerouslySetInnerHTML={{
           "__html": `console.log("ok");`
         }} />
       </head>
